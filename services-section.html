@@ -1,0 +1,484 @@
+<style type="text/css">
+        .container {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+            flex-direction: column; 
+        }
+
+        .left-column,
+        .right-column {
+            width: 100%;
+        }
+
+        .left-column {
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;   
+        }
+
+        .right-column {
+            display: none; 
+            background-image: url('');
+            background-size: cover;
+        }
+
+        .services-heading {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .service-buttons {
+            display: flex;
+            flex-wrap: wrap; 
+            justify-content: left; 
+            border: none;
+            border-radius: 100px;
+            /*background-color: #0a875a;*/
+        }
+
+        .service-button {
+            padding: 10px 15px; 
+            margin: 0px; 
+            border: none;
+            border-radius: 5px;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        .service-button:hover,
+        .service-button:active {
+            background-color: lightgray;
+            border: 0px;
+        }
+
+        .card-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .card {
+            display: flex;
+            align-items: center;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 10px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        .card:hover {
+            background-color: #f0f7ff;
+        }
+
+        /*.card img {*/
+            /*width: 80px;*/
+        /*    height: 80px;*/
+        /*    margin-right: 20px;*/
+        /*}*/
+
+        .card-content {
+            flex-grow: 2;
+        }
+
+        .card-heading {
+            font-size: 18px;
+            margin-bottom: 5px;
+            font-weight: normal;
+        }
+
+        .learn-more-link {
+            font-size: 14px;
+            
+            font-weight: normal;
+        }
+
+        @media only screen and (min-width: 600px) {
+            .container {
+                flex-direction: row;
+            }
+
+            .left-column {
+                width: 30%;
+            }
+
+            .right-column {
+                display: block; 
+                width: 70%;
+            }
+            
+            .left-column,
+            .right-column {
+                align-items: center; 
+            }
+        }
+        .right-column {
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+}
+.left-column{
+
+    }
+    </style>
+}
+
+
+<div class="container">
+    <div class="left-column">
+        <h3 class="services-heading">Our Cleaning Services Include</h3>
+        <p>Ensure consistent cleanliness with our reliable contract cleaning services, designed for ongoing maintenance and peace of mind.</p>
+        <div class="service-buttons">
+            <button class="service-button active" onclick="showCommercialCleaning()">Commercial Cleaning</button>
+            <button class="service-button" onclick="showOnceOffCleaning()">Once Off Cleaning</button>
+            <button class="service-button" onclick="showContractCleaning()">Contract Cleaning</button>
+            <button class="service-button" onclick="showGeneralCleaning()">Generalised</button>
+            <button class="service-button" onclick="showSpecialisedCleaning()">Specialised</button>
+        </div>
+        <ul class="card-list" id="cardList"></ul>
+    </div>
+    <div class="right-column" id="rightColumn"></div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    showCommercialCleaning();
+});
+
+function showCommercialCleaning() {
+    document.querySelectorAll('.service-button').forEach(button => {
+        button.classList.remove('active');
+    });
+    document.querySelector('.service-button:nth-child(1)').classList.add('active');
+    
+    document.getElementById("cardList").innerHTML = `
+
+<div class="columns">
+    <div class="column">
+        <ul class="card-list">
+            <!-- First Column -->
+            <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4108715/pexels-photo-4108715.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Office Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Industrial Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4108715/pexels-photo-4108715.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Residential Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4108715/pexels-photo-4108715.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Corporate Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4108715/pexels-photo-4108715.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Mall and Shopping Centre Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4108715/pexels-photo-4108715.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Hospitality Cleaning </p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        </ul>
+    </div>
+    <div class="column">
+        <ul class="card-list">
+            <!-- Second Column -->
+            <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4108715/pexels-photo-4108715.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Auto dealership cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4108715/pexels-photo-4108715.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Medical Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4108715/pexels-photo-4108715.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">School Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4108715/pexels-photo-4108715.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Bank Cleaning </p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4108715/pexels-photo-4108715.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Event Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4108715/pexels-photo-4108715.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Church Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4108715/pexels-photo-4108715.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Government Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4108715/pexels-photo-4108715.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Cleaning Training</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        </ul>
+    </div>
+</div>
+
+    
+        
+        
+    `;
+    document.getElementById("rightColumn").style.backgroundImage = "url('https://images.pexels.com/photos/38325/vacuum-cleaner-carpet-cleaner-housework-housekeeping-38325.jpeg')";
+}
+
+function showOnceOffCleaning() {
+    document.querySelectorAll('.service-button').forEach(button => {
+        button.classList.remove('active');
+    });
+    document.querySelector('.service-button:nth-child(2)').classList.add('active');
+    
+    document.getElementById("cardList").innerHTML = `
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Post Construction Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+            
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Pre and Post Occupation Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+            
+        </li>
+        
+    `;
+    document.getElementById("rightColumn").style.backgroundImage = "url('https://images.pexels.com/photos/1454804/pexels-photo-1454804.jpeg')";
+}
+
+function showContractCleaning() {
+    document.querySelectorAll('.service-button').forEach(button => {
+        button.classList.remove('active');
+    });
+    document.querySelector('.service-button:nth-child(3)').classList.add('active');
+    
+    document.getElementById("cardList").innerHTML = `
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Daily Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4108715/pexels-photo-4108715.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Weekly Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Monthly Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+    `;
+    document.getElementById("rightColumn").style.backgroundImage = "url('https://images.pexels.com/photos/4239031/pexels-photo-4239031.jpeg')";
+}
+
+function showGeneralCleaning() {
+    document.querySelectorAll('.service-button').forEach(button => {
+        button.classList.remove('active');
+    });
+    document.querySelector('.service-button:nth-child(3)').classList.add('active');
+    
+    document.getElementById("cardList").innerHTML = `
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Window Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4108715/pexels-photo-4108715.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Carpet Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Spring Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Floor Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4108715/pexels-photo-4108715.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Wall Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Curtain Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Bed Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4108715/pexels-photo-4108715.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Kitchen Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Bathroom Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Garden Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+    `;
+    document.getElementById("rightColumn").style.backgroundImage = "url('https://images.pexels.com/photos/4239031/pexels-photo-4239031.jpeg')";
+}
+
+function showSpecialisedCleaning() {
+    document.querySelectorAll('.service-button').forEach(button => {
+        button.classList.remove('active');
+    });
+    document.querySelector('.service-button:nth-child(3)').classList.add('active');
+    
+    document.getElementById("cardList").innerHTML = `
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Deep Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4108715/pexels-photo-4108715.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Window Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Carpet Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Floor Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Ceiling Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Pool Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Bathroom Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Kitchen Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Gutter Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Roof Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Solar Panel Cleaning</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Hygiene services</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Pest Control</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+        <li class="card" onclick="updateRightImage('https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg')">
+            <div class="card-content">
+                <b><b><p class="card-heading">Waste Management</p>
+                <a href="#" class="learn-more-link">Learn More</a>
+            </div>
+        </li>
+    `;
+    document.getElementById("rightColumn").style.backgroundImage = "url('https://images.pexels.com/photos/4239031/pexels-photo-4239031.jpeg')";
+}
+
+function updateRightImage(imageUrl) {
+    document.getElementById("rightColumn").style.backgroundImage = "url('" + imageUrl + "')";
+}
+</script>
